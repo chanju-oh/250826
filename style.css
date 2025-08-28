@@ -1,0 +1,152 @@
+/* 기본 레이아웃 */
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, 'Noto Sans KR', Arial, sans-serif;
+  color: #1b1f25;
+  background: #f6f8fb;
+}
+
+.site-header {
+  background: #1f3a5f;
+  color: #fff;
+  padding: 16px 20px;
+  border-bottom: 3px solid #0f2746;
+}
+.site-header h1 {
+  margin: 0 0 10px;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.top-nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.nav-btn {
+  background: #325ea8;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s, transform .02s;
+}
+.nav-btn:hover { background: #274c88; }
+.nav-btn:active { transform: translateY(1px); }
+
+.container {
+  max-width: 1500px;     /* 요청 사항 반영 */
+  min-height: 1200px;    /* 요청 사항 반영 */
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.info-box {
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.06);
+}
+
+.site-footer {
+  padding: 20px;
+  text-align: center;
+  color: #5b677a;
+}
+
+/* 표 공통 스타일 (진도계획/제작방법/작품제출 공용) */
+.plan-table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-top: 12px;
+  background: #fff;
+}
+.plan-table thead th {
+  background: #eaf1ff;
+  color: #1f3a5f;
+  text-align: left;
+  padding: 12px 14px;
+  font-weight: 800;
+  border-bottom: 2px solid #d4e2ff;
+}
+.plan-table tbody td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #eef2f7;
+}
+.plan-table tbody tr:nth-child(even) {
+  background: #fafcff;
+}
+
+/* 단계/제출 버튼 */
+.step-btn, .class-btn {
+  background: #3572c6;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s, transform .02s, box-shadow .2s;
+  box-shadow: 0 2px 8px rgba(53,114,198,.25);
+}
+.step-btn:hover, .class-btn:hover {
+  background: #2c5ea2;
+}
+.step-btn:active, .class-btn:active {
+  transform: translateY(1px);
+}
+
+/* 작품제출: 반 버튼 컨테이너 */
+.subheading {
+  margin: 18px 0 8px;
+  font-size: 1.05rem;
+  color: #2a3a55;
+}
+.class-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+  gap: 10px;
+  margin-top: 8px;
+}
+.class-btn {
+  padding: 10px 0;
+  font-size: 0.98rem;
+  border-radius: 12px;
+}
+
+/* 반응형 */
+@media (max-width: 900px) {
+  .container {
+    max-width: 100%;
+    min-height: auto;    /* 모바일에서 자동 높이 */
+  }
+  .nav-btn { padding: 9px 12px; }
+}
+@media (max-width: 600px) {
+  .class-buttons {
+    grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+  }
+}
+/* 소제목 */
+.subtitle {
+  font-size: 11pt;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #dfe6f3;
+}
+/* Canva embed 박스 */
+.canva-box {
+  margin-top: 16px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+}
+body {
+  font-family: 'Noto Sans KR';
+}
