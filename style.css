@@ -318,46 +318,7 @@ button.step-btn:focus-visible {
   border: 0;
 }
 
-/* 표 열 고정 + 가운데 정렬 */
-.plan-table {
-  table-layout: fixed;           /* 열 너비 고정 계산 */
-}
 
-/* 모든 셀 세로 가운데 */
-.plan-table th,
-.plan-table td {
-  vertical-align: middle;
-}
-
-/* 1열: 단계(번호) */
-.plan-table th:nth-child(1),
-.plan-table td:nth-child(1) {
-  width: 72px;                   /* 필요시 64~80px로 조절 */
-  text-align: center;
-  white-space: nowrap;
-}
-
-/* 2열: 설명 */
-.plan-table th:nth-child(2),
-.plan-table td:nth-child(2) {
-  width: auto;                   /* 남은 공간을 설명이 차지 */
-}
-
-/* 3열: 실행(버튼) */
-.plan-table th:nth-child(3),
-.plan-table td:nth-child(3) {
-  width: 120px;                  /* 버튼 칼럼 고정 폭 */
-  text-align: center;            /* 버튼 수평 중앙 */
-  white-space: nowrap;
-}
-
-/* 버튼 주변 여백 통일 (세로 줄간격 과도해지는 것 방지) */
-.plan-table td:nth-child(3) .step-btn {
-  margin: 0;                     /* 혹시 모를 상/하 margin 제거 */
-}
-
-/* 모바일에서 살짝 좁게 */
-@media (max-wi
 
 
 
