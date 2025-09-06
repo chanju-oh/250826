@@ -15,7 +15,7 @@
       <button id="plan-btn" class="nav-btn" type="button" aria-controls="info-box">진도계획</button>
       <button id="method-btn" class="nav-btn" type="button" aria-controls="info-box">제작방법</button>
       <button id="submit-btn" class="nav-btn" type="button" aria-controls="info-box">작품제출</button>
-      <button id="submit-btn" class="nav-btn" type="button" aria-controls="info-box">제출확인</button>
+      <button id="check-btn-nav" class="nav-btn" type="button" aria-controls="info-box">제출확인</button>
     </nav>
   </header>
 
@@ -28,6 +28,7 @@
   </footer>
 
   <script>
+    /* ------------------- VIEW 탭 콘텐츠 ------------------- */
     const view = {
       main: () => `
         <div id="default-content">
@@ -58,8 +59,6 @@
       `,
       method: () => `
         <h3>제작방법 (픽셀아트)</h3>
-
-        <!-- 표 #1 -->
         <table class="plan-table" aria-label="제작방법 단계표 1">
           <thead><tr><th>단계</th><th>설명</th><th>실행</th></tr></thead>
           <tbody>
@@ -70,16 +69,39 @@
             <tr><td>5</td><td>양식에 맞춰 제출하기</td><td><button class="step-btn" id="check-btn" data-action="go-submit">제출</button></td></tr>
           </tbody>
         </table>
-        <h3>제작방법 (픽셀아트 애니메이션)</h3>
 
-        <!-- 표 #2 (동일 내용, id만 2로 구분) -->
+        <h3>제작방법 (픽셀아트 애니메이션)</h3>
         <table class="plan-table" aria-label="제작방법 단계표 2" style="margin-top:14px;">
           <thead><tr><th>단계</th><th>설명</th><th>실행</th></tr></thead>
           <tbody>
-            <tr><td>2</td><td>레이어 이동으로 이미지 움직이기</td><td><button class="step-btn" id="canvas2-guide-btn">보기</button></td></tr>
-            <tr><td>3</td><td>레이어 수정으로 이미지 움직이기</td><td><button class="step-btn" id="feature2-guide-btn">보기</button></td></tr>
+            <!-- 유튜브 버튼 행 -->
+            <tr>
+              <td>1</td>
+              <td>레이어 이동으로 이미지 움직이기</td>
+              <td><button class="step-btn" id="install2-btn">보기</button></td>
+            </tr>
+            <!-- 유튜브 임베드가 표시될 숨김 행 -->
+            <tr id="yt-preview-row" style="display:none;">
+              <td colspan="3">
+                <div style="position:relative;width:100%;height:0;padding-top:56.25%;
+                            border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(63,69,81,0.16);">
+                  <iframe id="yt-frame"
+                          style="position:absolute;inset:0;width:100%;height:100%;border:0;"
+                          src=""
+                          title="유튜브 미리보기"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          allowfullscreen></iframe>
+                </div>
+                <div id="yt-fallback" style="display:none; margin-top:8px;">
+                  동영상이 로드되지 않으면
+                  <a href="https://youtu.be/VQRRblQSA4E" target="_blank" rel="noopener">여기</a>를 눌러 새 탭에서 보기
+                </div>
+              </td>
+            </tr>
+
+            <tr><td>2</td><td>레이어 수정으로 이미지 움직이기</td><td><button class="step-btn" id="canvas2-guide-btn">보기</button></td></tr>
             <tr><td>4</td><td>작품 저장 및 내보내기</td><td><button class="step-btn" id="export2-guide-btn">보기</button></td></tr>
-            <tr><td>5</td><td>양식에 맞춰 제출하기</td><td><button class="step-btn" id="check-btn" data-action="go-submit">제출</button></td></tr>
+            <tr><td>5</td><td>양식에 맞춰 제출하기</td><td><button class="step-btn" id="check2-btn" data-action="go-submit">제출</button></td></tr>
           </tbody>
         </table>
       `,
@@ -101,7 +123,7 @@
       `
     };
 
-    /* 반별 슬라이드 링크 */
+    /* ------------------- 반별 슬라이드 링크 ------------------- */
     const slideLinks = {
       1: 'https://docs.google.com/presentation/d/1TwC3eryTnJK66CUzSaTTRYsUqaaFc1eulQVC7eYDiEo/edit?usp=drive_link',
       2: 'https://docs.google.com/presentation/d/1eKKq2_WY6QZc4b832MA0XbZnT9XZxoraWZeteLp0ny4/edit?usp=drive_link',
@@ -122,6 +144,7 @@
       17: 'https://docs.google.com/presentation/d/1KYe1kLnnTyPCIkECgHyyw4gOO7Fr0ZkM54T5vOEfj5M/edit?usp=sharing'
     };
 
+    /* ------------------- 유틸 함수 ------------------- */
     function openLink(url) {
       if (!url) return;
       const w = window.open(url, '_blank');
@@ -142,6 +165,7 @@
       }
     }
 
+    /* ------------------- DOM 로드 후 이벤트 ------------------- */
     document.addEventListener('DOMContentLoaded', () => {
       const infoBox = document.getElementById('info-box');
       infoBox.innerHTML = view.main();
@@ -153,28 +177,43 @@
         if (t.closest('#main-btn')) infoBox.innerHTML = view.main();
         if (t.closest('#plan-btn')) infoBox.innerHTML = view.plan();
         if (t.closest('#method-btn')) infoBox.innerHTML = view.method();
-        if (t.closest('#submit-btn')) renderSubmit(infoBox);
+        if (t.closest('#submit-btn') || t.closest('#check-btn-nav')) renderSubmit(infoBox);
 
-        // 제작방법 표(#1) 버튼들
+        // 제작방법 표(#1)
         if (t.closest('#install-btn')) openLink('https://play.google.com/store/apps/details?id=com.jaween.paint&pcampaignid=web_share');
         if (t.closest('#canvas-guide-btn')) openLink('1.png');
         if (t.closest('#feature-guide-btn')) openLink('2.png');
-        if (t.closest('#export-guide-btn')) openLink('2.png'); // 필요시 다른 자료로 교체
-        if (t.closest('#check-btn')) renderSubmit(infoBox);     // ✅ 체크 → 작품제출 이동
+        if (t.closest('#export-guide-btn')) openLink('2.png');
+        if (t.closest('#check-btn')) renderSubmit(infoBox);
 
-        // 제작방법 표(#2) 버튼들
-        if (t.closest('#install2-btn')) openLink('https://play.google.com/store');
+        // 제작방법 표(#2) - 유튜브 토글
+        if (t.closest('#install2-btn')) {
+          const row = document.getElementById('yt-preview-row');
+          const frame = document.getElementById('yt-frame');
+          const fallback = document.getElementById('yt-fallback');
+
+          const YT_EMBED = 'https://www.youtube.com/embed/VQRRblQSA4E';
+
+          // 펼치기
+          frame.src = YT_EMBED;
+          row.style.display = 'table-row';
+
+          // 만약 iframe 로드가 차단되면 fallback 표시
+          setTimeout(() => {
+            if (!frame.contentWindow) fallback.style.display = 'block';
+          }, 1500);
+        }
+
         if (t.closest('#canvas2-guide-btn')) openLink('1.png');
-        if (t.closest('#feature2-guide-btn')) openLink('2.png');
-        if (t.closest('#export2-guide-btn')) openLink('2.png'); // 필요시 다른 자료로 교체
-        if (t.closest('#check2-btn')) renderSubmit(infoBox);    // ✅ 체크(두 번째 표) → 작품제출 이동
+        if (t.closest('#export2-guide-btn')) openLink('2.png');
+        if (t.closest('#check2-btn')) renderSubmit(infoBox);
 
         // 작품제출: 설치 버튼
         if (t.closest('#submit-install-btn')) {
           openLink('https://play.google.com/store/apps/details?id=com.google.android.apps.docs.editors.slides&hl=ko');
         }
 
-        // 반 버튼
+        // 반별 슬라이드 버튼
         const classBtn = t.closest('.class-btn');
         if (classBtn && classBtn.dataset.link) openLink(classBtn.dataset.link);
       });
@@ -182,6 +221,8 @@
   </script>
 </body>
 </html>
+
+
 
 
 
