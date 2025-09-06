@@ -74,32 +74,54 @@
         <table class="plan-table" aria-label="제작방법 단계표 2" style="margin-top:14px;">
           <thead><tr><th>단계</th><th>설명</th><th>실행</th></tr></thead>
           <tbody>
-            <!-- 유튜브 버튼 행 -->
+            <!-- 첫 번째 유튜브 -->
             <tr>
               <td>1</td>
               <td>레이어 이동으로 이미지 움직이기</td>
-              <td><button class="step-btn" id="install2-btn">보기</button></td>
+              <td><button class="step-btn" id="yt-btn-1">보기</button></td>
             </tr>
-            <!-- 유튜브 임베드가 표시될 숨김 행 -->
-            <tr id="yt-preview-row" style="display:none;">
+            <tr id="yt-preview-row-1" style="display:none;">
               <td colspan="3">
                 <div style="position:relative;width:100%;height:0;padding-top:56.25%;
                             border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(63,69,81,0.16);">
-                  <iframe id="yt-frame"
+                  <iframe id="yt-frame-1"
                           style="position:absolute;inset:0;width:100%;height:100%;border:0;"
                           src=""
-                          title="유튜브 미리보기"
+                          title="유튜브 미리보기 1"
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                           allowfullscreen></iframe>
                 </div>
-                <div id="yt-fallback" style="display:none; margin-top:8px;">
+                <div id="yt-fallback-1" style="display:none; margin-top:8px;">
                   동영상이 로드되지 않으면
                   <a href="https://youtu.be/VQRRblQSA4E" target="_blank" rel="noopener">여기</a>를 눌러 새 탭에서 보기
                 </div>
               </td>
             </tr>
 
-            <tr><td>2</td><td>레이어 수정으로 이미지 움직이기</td><td><button class="step-btn" id="canvas2-guide-btn">보기</button></td></tr>
+            <!-- 두 번째 유튜브 -->
+            <tr>
+              <td>2</td>
+              <td>레이어 수정으로 이미지 움직이기</td>
+              <td><button class="step-btn" id="yt-btn-2">보기</button></td>
+            </tr>
+            <tr id="yt-preview-row-2" style="display:none;">
+              <td colspan="3">
+                <div style="position:relative;width:100%;height:0;padding-top:56.25%;
+                            border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(63,69,81,0.16);">
+                  <iframe id="yt-frame-2"
+                          style="position:absolute;inset:0;width:100%;height:100%;border:0;"
+                          src=""
+                          title="유튜브 미리보기 2"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          allowfullscreen></iframe>
+                </div>
+                <div id="yt-fallback-2" style="display:none; margin-top:8px;">
+                  동영상이 로드되지 않으면
+                  <a href="https://youtu.be/z_VLpydaYFM" target="_blank" rel="noopener">여기</a>를 눌러 새 탭에서 보기
+                </div>
+              </td>
+            </tr>
+
             <tr><td>4</td><td>작품 저장 및 내보내기</td><td><button class="step-btn" id="export2-guide-btn">보기</button></td></tr>
             <tr><td>5</td><td>양식에 맞춰 제출하기</td><td><button class="step-btn" id="check2-btn" data-action="go-submit">제출</button></td></tr>
           </tbody>
@@ -186,25 +208,36 @@
         if (t.closest('#export-guide-btn')) openLink('2.png');
         if (t.closest('#check-btn')) renderSubmit(infoBox);
 
-        // 제작방법 표(#2) - 유튜브 토글
-        if (t.closest('#install2-btn')) {
-          const row = document.getElementById('yt-preview-row');
-          const frame = document.getElementById('yt-frame');
-          const fallback = document.getElementById('yt-fallback');
-
+        // 제작방법 표(#2) - 유튜브 영상 1
+        if (t.closest('#yt-btn-1')) {
+          const row = document.getElementById('yt-preview-row-1');
+          const frame = document.getElementById('yt-frame-1');
+          const fallback = document.getElementById('yt-fallback-1');
           const YT_EMBED = 'https://www.youtube.com/embed/VQRRblQSA4E';
 
-          // 펼치기
           frame.src = YT_EMBED;
           row.style.display = 'table-row';
 
-          // 만약 iframe 로드가 차단되면 fallback 표시
           setTimeout(() => {
             if (!frame.contentWindow) fallback.style.display = 'block';
           }, 1500);
         }
 
-        if (t.closest('#canvas2-guide-btn')) openLink('1.png');
+        // 제작방법 표(#2) - 유튜브 영상 2
+        if (t.closest('#yt-btn-2')) {
+          const row = document.getElementById('yt-preview-row-2');
+          const frame = document.getElementById('yt-frame-2');
+          const fallback = document.getElementById('yt-fallback-2');
+          const YT_EMBED = 'https://www.youtube.com/embed/z_VLpydaYFM';
+
+          frame.src = YT_EMBED;
+          row.style.display = 'table-row';
+
+          setTimeout(() => {
+            if (!frame.contentWindow) fallback.style.display = 'block';
+          }, 1500);
+        }
+
         if (t.closest('#export2-guide-btn')) openLink('2.png');
         if (t.closest('#check2-btn')) renderSubmit(infoBox);
 
@@ -221,13 +254,6 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
 
 
 
