@@ -15,8 +15,7 @@
       <button id="plan-btn" class="nav-btn" type="button" aria-controls="info-box">진도계획</button>
       <button id="method-btn" class="nav-btn" type="button" aria-controls="info-box">제작방법</button>
       <button id="submit-btn" class="nav-btn" type="button" aria-controls="info-box">작품제출</button>
-      <!-- 중복 ID 방지를 위해 제출확인은 별도 ID 사용 -->
-      <button id="check-btn-nav" class="nav-btn" type="button" aria-controls="info-box">제출확인</button>
+      <button id="submit-btn" class="nav-btn" type="button" aria-controls="info-box">제출확인</button>
     </nav>
   </header>
 
@@ -64,74 +63,23 @@
         <table class="plan-table" aria-label="제작방법 단계표 1">
           <thead><tr><th>단계</th><th>설명</th><th>실행</th></tr></thead>
           <tbody>
-            <tr>
-              <td>1</td><td>Pixel Brush 앱 설치</td>
-              <td><button class="step-btn" id="install-btn">설치</button></td>
-            </tr>
-
-            <tr>
-              <td>2</td><td>환경 설정 및 캔버스 크기 설정</td>
-              <td><button class="step-btn" id="canvas-guide-btn">보기</button></td>
-            </tr>
-            <!-- 2행 바로 아래에 동적 이미지 미리보기가 들어감 -->
-
-            <tr>
-              <td>3</td><td>기본 기능(브러시/레이어 등) 익히기</td>
-              <td><button class="step-btn" id="feature-guide-btn">보기</button></td>
-            </tr>
-            <!-- 3행 바로 아래에 동적 이미지 미리보기가 들어감 -->
-
-            <tr>
-              <td>4</td><td>작품 저장 및 내보내기</td>
-              <td><button class="step-btn" id="export-guide-btn">보기</button></td>
-            </tr>
-
-            <tr>
-              <td>5</td><td>양식에 맞춰 제출하기</td>
-              <td><button class="step-btn" id="check-btn" data-action="go-submit">제출</button></td>
-            </tr>
+            <tr><td>1</td><td>Pixel Brush 앱 설치</td><td><button class="step-btn" id="install-btn">설치</button></td></tr>
+            <tr><td>2</td><td>환경 설정 및 캔버스 크기 설정</td><td><button class="step-btn" id="canvas-guide-btn">보기</button></td></tr>
+            <tr><td>3</td><td>기본 기능(브러시/레이어 등) 익히기</td><td><button class="step-btn" id="feature-guide-btn">보기</button></td></tr>
+            <tr><td>4</td><td>작품 저장 및 내보내기</td><td><button class="step-btn" id="export-guide-btn">보기</button></td></tr>
+            <tr><td>5</td><td>양식에 맞춰 제출하기</td><td><button class="step-btn" id="check-btn" data-action="go-submit">제출</button></td></tr>
           </tbody>
         </table>
-
         <h3>제작방법 (픽셀아트 애니메이션)</h3>
 
-        <!-- 표 #2 -->
+        <!-- 표 #2 (동일 내용, id만 2로 구분) -->
         <table class="plan-table" aria-label="제작방법 단계표 2" style="margin-top:14px;">
           <thead><tr><th>단계</th><th>설명</th><th>실행</th></tr></thead>
           <tbody>
-            <tr>
-              <td>1</td><td>레이어 이동으로 이미지 움직이기</td>
-              <td><button class="step-btn" id="install2-btn">보기</button></td>
-            </tr>
-            <!-- 유튜브 미리보기 (처음엔 숨김) -->
-            <tr id="yt-preview-row" style="display:none;">
-              <td colspan="3">
-                <div style="position:relative;width:100%;height:0;padding-top:56.25%;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(63,69,81,0.16);">
-                  <iframe id="yt-frame"
-                          style="position:absolute;inset:0;width:100%;height:100%;border:0;"
-                          src=""
-                          title="유튜브 미리보기"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                          allowfullscreen></iframe>
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td>2</td><td>레이어 수정으로 이미지 움직이기</td>
-              <td><button class="step-btn" id="canvas2-guide-btn">보기</button></td>
-            </tr>
-            <!-- 2행 아래에 동적 이미지 미리보기가 들어감 -->
-
-            <tr>
-              <td>4</td><td>작품 저장 및 내보내기</td>
-              <td><button class="step-btn" id="export2-guide-btn">보기</button></td>
-            </tr>
-
-            <tr>
-              <td>5</td><td>양식에 맞춰 제출하기</td>
-              <td><button class="step-btn" id="check2-btn" data-action="go-submit">제출</button></td>
-            </tr>
+            <tr><td>2</td><td>레이어 이동으로 이미지 움직이기</td><td><button class="step-btn" id="canvas2-guide-btn">보기</button></td></tr>
+            <tr><td>3</td><td>레이어 수정으로 이미지 움직이기</td><td><button class="step-btn" id="feature2-guide-btn">보기</button></td></tr>
+            <tr><td>4</td><td>작품 저장 및 내보내기</td><td><button class="step-btn" id="export2-guide-btn">보기</button></td></tr>
+            <tr><td>5</td><td>양식에 맞춰 제출하기</td><td><button class="step-btn" id="check-btn" data-action="go-submit">제출</button></td></tr>
           </tbody>
         </table>
       `,
@@ -174,51 +122,10 @@
       17: 'https://docs.google.com/presentation/d/1KYe1kLnnTyPCIkECgHyyw4gOO7Fr0ZkM54T5vOEfj5M/edit?usp=sharing'
     };
 
-    /* ====== 이미지 경로 상수 (필요시 폴더 포함 경로로 바꿔주세요) ====== */
-    const IMG1 = '1.png';   // 예: 'images/1.png'
-    const IMG2 = '2.png';   // 예: 'images/2.png'
-
-    /* ====== 유틸 ====== */
     function openLink(url) {
       if (!url) return;
       const w = window.open(url, '_blank');
       if (!w || w.closed || typeof w.closed === 'undefined') window.location.href = url;
-    }
-
-    /**
-     * 버튼이 들어있는 <tr> 바로 '아래'에, 이미지 미리보기 <tr>을 생성/갱신
-     * @param {HTMLElement} triggerBtn - 클릭된 버튼 엘리먼트
-     * @param {string} rowId - 삽입/갱신할 <tr>의 고유 id
-     * @param {string} imgPath - 이미지 경로
-     * @param {string} alt - 대체텍스트
-     */
-    function showImagePreviewBelowRow(triggerBtn, rowId, imgPath, alt='이미지 미리보기') {
-      const tr = triggerBtn.closest('tr');
-      if (!tr) return;
-
-      let row = document.getElementById(rowId);
-      if (!row) {
-        row = document.createElement('tr');
-        row.id = rowId;
-        row.innerHTML = `
-          <td colspan="3">
-            <div style="padding:8px 0;">
-              <img id="${rowId}-img" alt="${alt}" style="max-width:100%;height:auto;border-radius:8px;box-shadow:0 2px 8px rgba(63,69,81,0.16);" />
-              <div id="${rowId}-err" style="display:none;margin-top:8px;color:#c00;font-size:0.9rem;"></div>
-            </div>
-          </td>
-        `;
-        tr.insertAdjacentElement('afterend', row);
-      }
-
-      const img = document.getElementById(`${rowId}-img`);
-      const err = document.getElementById(`${rowId}-err`);
-      err.style.display = 'none';
-      img.onerror = () => {
-        err.textContent = `이미지를 불러올 수 없어요: ${imgPath}  (경로/이름/대소문자/커밋 여부 확인)`;
-        err.style.display = 'block';
-      };
-      img.src = imgPath + `?v=${Date.now()}`; // 캐시 무력화
     }
 
     function renderSubmit(infoBox) {
@@ -235,7 +142,6 @@
       }
     }
 
-    /* ====== 초기 렌더 + 이벤트 ====== */
     document.addEventListener('DOMContentLoaded', () => {
       const infoBox = document.getElementById('info-box');
       infoBox.innerHTML = view.main();
@@ -247,33 +153,21 @@
         if (t.closest('#main-btn')) infoBox.innerHTML = view.main();
         if (t.closest('#plan-btn')) infoBox.innerHTML = view.plan();
         if (t.closest('#method-btn')) infoBox.innerHTML = view.method();
-        if (t.closest('#submit-btn') || t.closest('#check-btn-nav')) renderSubmit(infoBox);
+        if (t.closest('#submit-btn')) renderSubmit(infoBox);
 
-        // 제작방법 표(#1)
+        // 제작방법 표(#1) 버튼들
         if (t.closest('#install-btn')) openLink('https://play.google.com/store/apps/details?id=com.jaween.paint&pcampaignid=web_share');
-        if (t.closest('#canvas-guide-btn')) showImagePreviewBelowRow(t.closest('#canvas-guide-btn'), 'img-preview-row-1', IMG1, '캔버스 설정 가이드');
-        if (t.closest('#feature-guide-btn')) showImagePreviewBelowRow(t.closest('#feature-guide-btn'), 'img-preview-row-2', IMG2, '기능 가이드');
-        if (t.closest('#export-guide-btn')) openLink('2.png'); // 필요 시 변경
-        if (t.closest('#check-btn')) renderSubmit(infoBox);
+        if (t.closest('#canvas-guide-btn')) openLink('1.png');
+        if (t.closest('#feature-guide-btn')) openLink('2.png');
+        if (t.closest('#export-guide-btn')) openLink('2.png'); // 필요시 다른 자료로 교체
+        if (t.closest('#check-btn')) renderSubmit(infoBox);     // ✅ 체크 → 작품제출 이동
 
-        // 제작방법 표(#2) - 유튜브 임베드 토글 + 이미지 프리뷰
-        if (t.closest('#install2-btn')) {
-          const row = document.getElementById('yt-preview-row');
-          const frame = document.getElementById('yt-frame');
-          const YT_EMBED = 'https://www.youtube.com/embed/VQRRblQSA4E';
-          if (row.style.display === 'none') {
-            frame.src = YT_EMBED;
-            row.style.display = 'table-row';
-            setTimeout(() => frame.focus?.(), 50);
-          } else {
-            // 닫고 싶으면 주석 해제
-            // frame.src = '';
-            // row.style.display = 'none';
-          }
-        }
-        if (t.closest('#canvas2-guide-btn')) showImagePreviewBelowRow(t.closest('#canvas2-guide-btn'), 'img2-preview-row-1', IMG1, '캔버스 설정 가이드(애니메이션)');
-        if (t.closest('#export2-guide-btn')) openLink('2.png');
-        if (t.closest('#check2-btn')) renderSubmit(infoBox);
+        // 제작방법 표(#2) 버튼들
+        if (t.closest('#install2-btn')) openLink('https://play.google.com/store');
+        if (t.closest('#canvas2-guide-btn')) openLink('1.png');
+        if (t.closest('#feature2-guide-btn')) openLink('2.png');
+        if (t.closest('#export2-guide-btn')) openLink('2.png'); // 필요시 다른 자료로 교체
+        if (t.closest('#check2-btn')) renderSubmit(infoBox);    // ✅ 체크(두 번째 표) → 작품제출 이동
 
         // 작품제출: 설치 버튼
         if (t.closest('#submit-install-btn')) {
@@ -288,6 +182,7 @@
   </script>
 </body>
 </html>
+
 
 
 
