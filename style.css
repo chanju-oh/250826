@@ -182,3 +182,25 @@ body {
   overflow: hidden;
   box-shadow: 0 2px 12px rgba(0,0,0,0.1);
 }
+
+.nav-btn,
+.class-btn,
+.step-btn {
+  background: #2563eb !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 10px !important;
+  padding: 10px 14px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25) !important;
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.06s ease !important;
+}
+
+.nav-btn:hover,
+.class-btn:hover,
+.step-btn:hover {
+  background: #1d4ed8 !important;
+  box-shadow: 0 6px 18px rgba(29, 78, 216, 0.35) !important;
+  transform: translateY(-1px) !important;
+}
