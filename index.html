@@ -60,11 +60,31 @@
         <table class="plan-table">
           <thead><tr><th>단계</th><th>설명</th><th>실행</th></tr></thead>
           <tbody>
-            <tr><td>1</td><td>Pixel Brush 앱 설치</td><td><button id="install-btn" class="step-btn">설치</button></td></tr>
-            <tr><td>2</td><td>환경 설정 및 캔버스 크기 설정</td><td><button id="canvas-guide-btn" class="step-btn">보기</button></td></tr>
-            <tr><td>3</td><td>기본 기능 익히기</td><td><button id="feature-guide-btn" class="step-btn">보기</button></td></tr>
-            <tr><td>4</td><td>작품 저장 및 내보내기</td><td><button id="export-guide-btn" class="step-btn">보기</button></td></tr>
-            <tr><td>5</td><td>양식에 맞춰 제출하기</td><td><button id="check-btn" class="step-btn">제출</button></td></tr>
+            <tr>
+              <td>1</td>
+              <td>Pixel Brush 앱 설치</td>
+              <td><button id="install-btn" class="step-btn">설치</button></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>환경 설정 및 캔버스 크기 설정</td>
+              <td><button id="canvas-guide-btn" class="step-btn">보기</button></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>기본 기능 익히기</td>
+              <td><button id="feature-guide-btn" class="step-btn">보기</button></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>작품 저장 및 내보내기</td>
+              <td><button id="export-guide-btn" class="step-btn">보기</button></td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>양식에 맞춰 제출하기</td>
+              <td><button id="check-btn" class="step-btn">제출</button></td>
+            </tr>
           </tbody>
         </table>
 
@@ -72,39 +92,67 @@
         <table class="plan-table">
           <thead><tr><th>단계</th><th>설명</th><th>실행</th></tr></thead>
           <tbody>
-            <tr><td>1</td><td>파일 복제하기</td><td><button id="file-copy-btn" class="step-btn">보기</button></td></tr>
-            <tr><td>2</td><td>레이어 이동으로 이미지 움직이기</td><td><button id="yt-btn-1" class="step-btn">보기</button></td></tr>
+            <!-- 1. 파일 복제하기 -->
+            <tr>
+              <td>1</td>
+              <td>파일 복제하기</td>
+              <td><button id="file-copy-btn" class="step-btn">보기</button></td>
+            </tr>
 
-<!-- 유튜브 1 -->
-<tr id="yt-preview-row-1" style="display:none;">
-  <td colspan="3" class="yt-cell">
-    <div class="yt-wrap">
-      <iframe id="yt-frame-1"
-              src=""
-              title="레이어 이동으로 이미지 움직이기"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen></iframe>
-    </div>
-  </td>
-</tr>
-            <tr><td>3</td><td>레이어 수정으로 이미지 움직이기</td><td><button id="yt-btn-1" class="step-btn">보기</button></td></tr>
-<!-- 유튜브 2 -->
-<tr id="yt-preview-row-2" style="display:none;">
-  <td colspan="3" class="yt-cell">
-    <div class="yt-wrap">
-      <iframe id="yt-frame-2"
-              src=""
-              title="레이어 수정으로 이미지 움직이기"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen></iframe>
-    </div>
-  </td>
-</tr>
+            <!-- 2. 레이어 이동 (버튼 행) -->
+            <tr>
+              <td>2</td>
+              <td>레이어 이동으로 이미지 움직이기</td>
+              <td><button id="yt-btn-1" class="step-btn">보기</button></td>
+            </tr>
+            <!-- 2. 레이어 이동 (미리보기 행) -->
+            <tr id="yt-preview-row-1" style="display:none;">
+              <td colspan="3" class="yt-cell">
+                <div class="yt-wrap">
+                  <iframe id="yt-frame-1"
+                          src=""
+                          title="레이어 이동으로 이미지 움직이기"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          allowfullscreen></iframe>
+                </div>
+              </td>
+            </tr>
 
+            <!-- 3. 레이어 수정 (버튼 행) -->
+            <tr>
+              <td>3</td>
+              <td>레이어 수정으로 이미지 움직이기</td>
+              <td><button id="yt-btn-2" class="step-btn">보기</button></td>
+            </tr>
+            <!-- 3. 레이어 수정 (미리보기 행) -->
+            <tr id="yt-preview-row-2" style="display:none;">
+              <td colspan="3" class="yt-cell">
+                <div class="yt-wrap">
+                  <iframe id="yt-frame-2"
+                          src=""
+                          title="레이어 수정으로 이미지 움직이기"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          allowfullscreen></iframe>
+                </div>
+              </td>
+            </tr>
 
-            <tr><td>4</td><td>프레임 속도 조절하기</td><td><button id="frame-speed-btn" class="step-btn">보기</button></td></tr>
-            <tr><td>5</td><td>작품 저장 및 내보내기</td><td><button id="export2-guide-btn" class="step-btn">보기</button></td></tr>
-            <tr><td>6</td><td>양식에 맞춰 제출하기</td><td><button id="check2-btn" class="step-btn">제출</button></td></tr>
+            <!-- 4~6 -->
+            <tr>
+              <td>4</td>
+              <td>프레임 속도 조절하기</td>
+              <td><button id="frame-speed-btn" class="step-btn">보기</button></td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>작품 저장 및 내보내기</td>
+              <td><button id="export2-guide-btn" class="step-btn">보기</button></td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>양식에 맞춰 제출하기</td>
+              <td><button id="check2-btn" class="step-btn">제출</button></td>
+            </tr>
           </tbody>
         </table>
       `,
@@ -115,9 +163,7 @@
           <tbody>
             <tr>
               <td>어플설치</td>
-              <td>구글 슬라이드 어플 
-                <button id="submit-install-btn" class="step-btn">설치</button>
-              </td>
+              <td>구글 슬라이드 어플 <button id="submit-install-btn" class="step-btn">설치</button></td>
             </tr>
             <tr><td>제출방법</td><td>아래 본인 반 버튼을 눌러 슬라이드 내 본인 번호에 업로드</td></tr>
             <tr><td>작품규격</td><td>PNG 확장자 저장, 확대 체크</td></tr>
@@ -160,7 +206,6 @@
       infoBox.innerHTML = view.submit();
       const wrap = document.getElementById('class-buttons');
 
-      // 1~17 버튼 생성
       for (let i = 1; i <= 17; i++) {
         const btn = document.createElement('button');
         btn.type = 'button';
@@ -221,5 +266,3 @@
   </script>
 </body>
 </html>
-
-
