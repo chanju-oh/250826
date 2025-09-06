@@ -15,7 +15,8 @@
       <button id="plan-btn" class="nav-btn" type="button" aria-controls="info-box">진도계획</button>
       <button id="method-btn" class="nav-btn" type="button" aria-controls="info-box">제작방법</button>
       <button id="submit-btn" class="nav-btn" type="button" aria-controls="info-box">작품제출</button>
-      <button id="submit-btn" class="nav-btn" type="button" aria-controls="info-box">제출확인</button>
+      <!-- 기존에 submit-btn이 두 번 있었던 문제를 방지하기 위해 ID를 구분합니다 -->
+      <button id="check-btn-nav" class="nav-btn" type="button" aria-controls="info-box">제출확인</button>
     </nav>
   </header>
 
@@ -70,118 +71,25 @@
             <tr><td>5</td><td>양식에 맞춰 제출하기</td><td><button class="step-btn" id="check-btn" data-action="go-submit">제출</button></td></tr>
           </tbody>
         </table>
+
         <h3>제작방법 (픽셀아트 애니메이션)</h3>
 
-        <!-- 표 #2 (동일 내용, id만 2로 구분) -->
+        <!-- 표 #2 -->
         <table class="plan-table" aria-label="제작방법 단계표 2" style="margin-top:14px;">
           <thead><tr><th>단계</th><th>설명</th><th>실행</th></tr></thead>
           <tbody>
-            <tr><td>1</td><td>레이어 이동으로 이미지 움직이기</td><td><button class="step-btn" id="install2-btn">보기</button></td></tr>
-            <tr><td>2</td><td>레이어 수정으로 이미지 움직이기</td><td><button class="step-btn" id="canvas2-guide-btn">보기</button></td></tr>
-            <tr><td>4</td><td>작품 저장 및 내보내기</td><td><button class="step-btn" id="export-guide-btn">보기</button></td></tr>
-            <tr><td>5</td><td>양식에 맞춰 제출하기</td><td><button class="step-btn" id="check-btn" data-action="go-submit">제출</button></td></tr>
-          </tbody>
-        </table>
-      `,
-      submit: () => `
-        <h3>작품제출</h3>
-        <table class="plan-table" aria-label="작품 제출 안내 표">
-          <thead><tr><th scope="col">항목</th><th scope="col">내용</th></tr></thead>
-          <tbody>
-            <tr><td>어플설치</td><td>구글 슬라이드 어플 <button class="step-btn" id="submit-install-btn">설치</button></td></tr>
-            <tr><td>제출방법</td><td>아래 본인 반 버튼을 누르고 슬라이드 내 본인 번호에 업로드 및 작성</td></tr>
-            <tr><td>작품규격</td><td>이미지 확대 체크, 확장명 PNG 저장 확인</td></tr>
-            <tr><td>설명작성</td><td>회색 칸 안에 이미지 위치시키기, 창작 슬로건 작성하기</td></tr>
-            <tr><td>주의사항</td><td>본인 자리 잘 확인하고 업로드, 타인의 슬라이드 수정 금지</td></tr>
-            <tr><td></td><td><b>이 슬라이드가 '보고서'를 대신합니다.</b></td></tr>
-          </tbody>
-        </table>
-        <h4 class="subheading">반별 바로가기</h4>
-        <div class="class-buttons" id="class-buttons"></div>
-      `
-    };
+            <!-- 2-1행: 보기 버튼 -->
+            <tr>
+              <td>1</td>
+              <td>레이어 이동으로 이미지 움직이기</td>
+              <td><button class="step-btn" id="install2-btn">보기</button></td>
+            </tr>
+            <!-- 2-1행 바로 아래: 숨겨진 유튜브 미리보기 행 -->
+            <tr id="yt-preview-row" style="display:none;">
+              <td colspan="3">
+                <div style="position:relative;width:
 
-    /* 반별 슬라이드 링크 */
-    const slideLinks = {
-      1: 'https://docs.google.com/presentation/d/1TwC3eryTnJK66CUzSaTTRYsUqaaFc1eulQVC7eYDiEo/edit?usp=drive_link',
-      2: 'https://docs.google.com/presentation/d/1eKKq2_WY6QZc4b832MA0XbZnT9XZxoraWZeteLp0ny4/edit?usp=drive_link',
-      3: 'https://docs.google.com/presentation/d/1aoFG5Yf4aWJfiM5LBVRakLU-LsGeIrnHJrbTriAotzc/edit?usp=drive_link',
-      4: 'https://docs.google.com/presentation/d/1rg7tFWMMBSf87LiPEXvWGNyLULsX8EM-085oUorVhkk/edit?usp=drive_link',
-      5: 'https://docs.google.com/presentation/d/1PADYO1NHBRlWkgarf6HPrD--4eN35VI_SjLagm5O-9I/edit?usp=drive_link',
-      6: 'https://docs.google.com/presentation/d/11-uoRKSgSFQJXJpNK9RGBU4D6qhaa9DX68Sxq7zs5FM/edit?usp=drive_link',
-      7: 'https://docs.google.com/presentation/d/1gd7mBF-hhS-cMF_-PdvD1y7UpAha9yuBNh1tOicrxoA/edit?usp=drive_link',
-      8: 'https://docs.google.com/presentation/d/1yum7dj7DNlrIy6Gbsf-zeWQR9QJivhoOhsGb9SkuAoo/edit?usp=drive_link',
-      9: 'https://docs.google.com/presentation/d/1dLEdgPkM_JhnNKALSIO8rJSPFpcI0f1OgbC07_eDmfE/edit?usp=drive_link',
-      10: 'https://docs.google.com/presentation/d/10Pp9jyz_I2l5Oh4HdOrjeqNSTIYVE-cvD1kO12TCXs0/edit?usp=sharing',
-      11: 'https://docs.google.com/presentation/d/1fxyenrkbaGY7sMkI-P1RkkE5dMv93r3568hjwJBhM6E/edit?usp=sharing',
-      12: 'https://docs.google.com/presentation/d/1MySCSdRLuAI-6-yTitRH08eVtoBBJbfndZRXVKJH3iA/edit?usp=sharing',
-      13: 'https://docs.google.com/presentation/d/18BUw1NEEEoUJh8HgriFS-tWXppeuQpJ76Y5Lxc9m2jY/edit?usp=sharing',
-      14: 'https://docs.google.com/presentation/d/1bKigHqLfhIgtGF1V-uJvBYeiRJwumkVBWfcNQ3sSPCo/edit?usp=sharing',
-      15: 'https://docs.google.com/presentation/d/18CkyhUGgoBtxYgyCpArCHQel_7Lb5cDAtoKRFgXu7eQ/edit?usp=sharing',
-      16: 'https://docs.google.com/presentation/d/1zUOCYehdlnLA9Z8XqIfHN3W5qIHkt7Rj1exb9TQYBI4/edit?usp=sharing',
-      17: 'https://docs.google.com/presentation/d/1KYe1kLnnTyPCIkECgHyyw4gOO7Fr0ZkM54T5vOEfj5M/edit?usp=sharing'
-    };
 
-    function openLink(url) {
-      if (!url) return;
-      const w = window.open(url, '_blank');
-      if (!w || w.closed || typeof w.closed === 'undefined') window.location.href = url;
-    }
-
-    function renderSubmit(infoBox) {
-      infoBox.innerHTML = view.submit();
-      const wrap = document.getElementById('class-buttons');
-      if (wrap) {
-        for (let i = 1; i <= 17; i++) {
-          const btn = document.createElement('button');
-          btn.className = 'class-btn';
-          btn.textContent = `3-${i}`;
-          if (slideLinks[i]) btn.dataset.link = slideLinks[i];
-          wrap.appendChild(btn);
-        }
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const infoBox = document.getElementById('info-box');
-      infoBox.innerHTML = view.main();
-
-      document.addEventListener('click', (e) => {
-        const t = e.target;
-
-        // 탭 이동
-        if (t.closest('#main-btn')) infoBox.innerHTML = view.main();
-        if (t.closest('#plan-btn')) infoBox.innerHTML = view.plan();
-        if (t.closest('#method-btn')) infoBox.innerHTML = view.method();
-        if (t.closest('#submit-btn')) renderSubmit(infoBox);
-
-        // 제작방법 표(#1) 버튼들
-        if (t.closest('#install-btn')) openLink('https://play.google.com/store/apps/details?id=com.jaween.paint&pcampaignid=web_share');
-        if (t.closest('#canvas-guide-btn')) openLink('1.png');
-        if (t.closest('#feature-guide-btn')) openLink('2.png');
-        if (t.closest('#export-guide-btn')) openLink('2.png'); // 필요시 다른 자료로 교체
-        if (t.closest('#check-btn')) renderSubmit(infoBox);     // ✅ 체크 → 작품제출 이동
-
-        // 제작방법 표(#2) 버튼들
-        if (t.closest('#install2-btn')) openLink('https://play.google.com/store');
-        if (t.closest('#canvas2-guide-btn')) openLink('1.png');
-        if (t.closest('#feature2-guide-btn')) openLink('2.png');
-        if (t.closest('#export2-guide-btn')) openLink('2.png'); // 필요시 다른 자료로 교체
-        if (t.closest('#check2-btn')) renderSubmit(infoBox);    // ✅ 체크(두 번째 표) → 작품제출 이동
-
-        // 작품제출: 설치 버튼
-        if (t.closest('#submit-install-btn')) {
-          openLink('https://play.google.com/store/apps/details?id=com.google.android.apps.docs.editors.slides&hl=ko');
-        }
-
-        // 반 버튼
-        const classBtn = t.closest('.class-btn');
-        if (classBtn && classBtn.dataset.link) openLink(classBtn.dataset.link);
-      });
-    });
-  </script>
-</body>
-</html>
 
 
 
