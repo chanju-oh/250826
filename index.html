@@ -15,6 +15,8 @@
       <button id="plan-btn" class="nav-btn">진도계획</button>
       <button id="method-btn" class="nav-btn">제작방법</button>
       <button id="submit-btn" class="nav-btn">작품제출</button>
+      <!-- ✅ 예시작품 버튼 추가 -->
+      <button id="example-btn" class="nav-btn">예시작품</button>
       <button id="check-btn-nav" class="nav-btn">제출확인</button>
     </nav>
   </header>
@@ -55,6 +57,19 @@
           </tbody>
         </table>
       `,
+      /* ✅ 예시작품 탭 */
+      example: () => `
+        <h3>예시작품</h3>
+        <div style="position:relative;width:100%;height:0;padding-top:56.25%;
+                    box-shadow:0 2px 8px rgba(63,69,81,0.16);margin-top:1.6em;margin-bottom:0.9em;
+                    overflow:hidden;border-radius:8px;will-change:transform;">
+          <iframe loading="lazy"
+                  style="position:absolute;width:100%;height:100%;top:0;left:0;border:none;"
+                  src="https://docs.google.com/presentation/d/1PFBHV6LaRSvnyVyd_vo0Q_coxM9cGyPCmDbgwA-oQF4/embed?start=false&loop=false&delayms=3000"
+                  allowfullscreen></iframe>
+        </div>
+        <p style="text-align:center;">예시작품을 참고하여 자신만의 작품을 구상해 보세요.</p>
+      `,
       method: () => `
         <h3>제작방법 (픽셀아트)</h3>
         <table class="plan-table">
@@ -87,74 +102,6 @@
             </tr>
           </tbody>
         </table>
-
-        <h3>제작방법 (픽셀아트 애니메이션)</h3>
-        <table class="plan-table">
-          <thead><tr><th>단계</th><th>설명</th><th>실행</th></tr></thead>
-          <tbody>
-            <!-- 1. 파일 복제하기 -->
-            <tr>
-              <td>1</td>
-              <td>파일 복제하기</td>
-              <td><button id="file-copy-btn" class="step-btn">보기</button></td>
-            </tr>
-
-            <!-- 2. 레이어 이동 (버튼 행) -->
-            <tr>
-              <td>2</td>
-              <td>레이어 이동으로 이미지 움직이기</td>
-              <td><button id="yt-btn-1" class="step-btn">보기</button></td>
-            </tr>
-            <!-- 2. 레이어 이동 (미리보기 행) -->
-            <tr id="yt-preview-row-1" style="display:none;">
-              <td colspan="3" class="yt-cell">
-                <div class="yt-wrap">
-                  <iframe id="yt-frame-1"
-                          src=""
-                          title="레이어 이동으로 이미지 움직이기"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                          allowfullscreen></iframe>
-                </div>
-              </td>
-            </tr>
-
-            <!-- 3. 레이어 수정 (버튼 행) -->
-            <tr>
-              <td>3</td>
-              <td>레이어 수정으로 이미지 움직이기</td>
-              <td><button id="yt-btn-2" class="step-btn">보기</button></td>
-            </tr>
-            <!-- 3. 레이어 수정 (미리보기 행) -->
-            <tr id="yt-preview-row-2" style="display:none;">
-              <td colspan="3" class="yt-cell">
-                <div class="yt-wrap">
-                  <iframe id="yt-frame-2"
-                          src=""
-                          title="레이어 수정으로 이미지 움직이기"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                          allowfullscreen></iframe>
-                </div>
-              </td>
-            </tr>
-
-            <!-- 4~6 -->
-            <tr>
-              <td>4</td>
-              <td>프레임 속도 조절하기</td>
-              <td><button id="frame-speed-btn" class="step-btn">보기</button></td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>작품 저장 및 내보내기</td>
-              <td><button id="export2-guide-btn" class="step-btn">보기</button></td>
-            </tr>
-            <tr>
-              <td>6</td>
-              <td>양식에 맞춰 제출하기</td>
-              <td><button id="check2-btn" class="step-btn">제출</button></td>
-            </tr>
-          </tbody>
-        </table>
       `,
       submit: () => `
         <h3>작품제출</h3>
@@ -175,25 +122,12 @@
       `
     };
 
-    /* ---------- 반별 슬라이드 링크 (1~17) ---------- */
+    /* ---------- 반별 슬라이드 링크 (예시) ---------- */
     const slideLinks = {
       1: 'https://docs.google.com/presentation/d/1TwC3eryTnJK66CUzSaTTRYsUqaaFc1eulQVC7eYDiEo/edit?usp=drive_link',
       2: 'https://docs.google.com/presentation/d/1eKKq2_WY6QZc4b832MA0XbZnT9XZxoraWZeteLp0ny4/edit?usp=drive_link',
-      3: 'https://docs.google.com/presentation/d/1aoFG5Yf4aWJfiM5LBVRakLU-LsGeIrnHJrbTriAotzc/edit?usp=drive_link',
-      4: 'https://docs.google.com/presentation/d/1rg7tFWMMBSf87LiPEXvWGNyLULsX8EM-085oUorVhkk/edit?usp=drive_link',
-      5: 'https://docs.google.com/presentation/d/1PADYO1NHBRlWkgarf6HPrD--4eN35VI_SjLagm5O-9I/edit?usp=drive_link',
-      6: 'https://docs.google.com/presentation/d/11-uoRKSgSFQJXJpNK9RGBU4D6qhaa9DX68Sxq7zs5FM/edit?usp=drive_link',
-      7: 'https://docs.google.com/presentation/d/1gd7mBF-hhS-cMF_-PdvD1y7UpAha9yuBNh1tOicrxoA/edit?usp=drive_link',
-      8: 'https://docs.google.com/presentation/d/1yum7dj7DNlrIy6Gbsf-zeWQR9QJivhoOhsGb9SkuAoo/edit?usp=drive_link',
-      9: 'https://docs.google.com/presentation/d/1dLEdgPkM_JhnNKALSIO8rJSPFpcI0f1OgbC07_eDmfE/edit?usp=drive_link',
-      10: 'https://docs.google.com/presentation/d/10Pp9jyz_I2l5Oh4HdOrjeqNSTIYVE-cvD1kO12TCXs0/edit?usp=sharing',
-      11: 'https://docs.google.com/presentation/d/1fxyenrkbaGY7sMkI-P1RkkE5dMv93r3568hjwJBhM6E/edit?usp=sharing',
-      12: 'https://docs.google.com/presentation/d/1MySCSdRLuAI-6-yTitRH08eVtoBBJbfndZRXVKJH3iA/edit?usp=sharing',
-      13: 'https://docs.google.com/presentation/d/18BUw1NEEEoUJh8HgriFS-tWXppeuQpJ76Y5Lxc9m2jY/edit?usp=sharing',
-      14: 'https://docs.google.com/presentation/d/1bKigHqLfhIgtGF1V-uJvBYeiRJwumkVBWfcNQ3sSPCo/edit?usp=sharing',
-      15: 'https://docs.google.com/presentation/d/18CkyhUGgoBtxYgyCpArCHQel_7Lb5cDAtoKRFgXu7eQ/edit?usp=sharing',
-      16: 'https://docs.google.com/presentation/d/1zUOCYehdlnLA9Z8XqIfHN3W5qIHkt7Rj1exb9TQYBI4/edit?usp=sharing',
-      17: 'https://docs.google.com/presentation/d/1KYe1kLnnTyPCIkECgHyyw4gOO7Fr0ZkM54T5vOEfj5M/edit?usp=sharing'
+      3: 'https://docs.google.com/presentation/d/1aoFG5Yf4aWJfiM5LBVRakLU-LsGeIrnHJrbTriAotzc/edit?usp=drive_link'
+      // 필요시 추가
     };
 
     /* ---------- 유틸 ---------- */
@@ -206,7 +140,7 @@
       infoBox.innerHTML = view.submit();
       const wrap = document.getElementById('class-buttons');
 
-      for (let i = 1; i <= 17; i++) {
+      for (let i = 1; i <= 3; i++) {
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'class-btn';
@@ -232,32 +166,16 @@
         if (id === 'main-btn') infoBox.innerHTML = view.main();
         if (id === 'plan-btn') infoBox.innerHTML = view.plan();
         if (id === 'method-btn') infoBox.innerHTML = view.method();
+        if (id === 'example-btn') infoBox.innerHTML = view.example();  // ✅ 예시작품 탭
         if (id === 'submit-btn' || id === 'check-btn-nav') renderSubmit(infoBox);
 
-        // 표(#1)
+        // 표 버튼 기능
         if (id === 'install-btn') openLink('https://play.google.com/store/apps/details?id=com.jaween.paint');
         if (id === 'canvas-guide-btn') openLink('1.png');
         if (id === 'feature-guide-btn') openLink('2.png');
         if (id === 'export-guide-btn') openLink('3.png');
         if (id === 'check-btn') renderSubmit(infoBox);
 
-        // 표(#2)
-        if (id === 'file-copy-btn') openLink('4.png');
-        if (id === 'frame-speed-btn') openLink('5.png');
-        if (id === 'export2-guide-btn') openLink('6.png');
-        if (id === 'check2-btn') renderSubmit(infoBox);
-
-        // 유튜브 영상
-        if (id === 'yt-btn-1') {
-          document.getElementById('yt-frame-1').src = 'https://www.youtube.com/embed/Peisu8Sv7Zk';
-          document.getElementById('yt-preview-row-1').style.display = 'table-row';
-        }
-        if (id === 'yt-btn-2') {
-          document.getElementById('yt-frame-2').src = 'https://www.youtube.com/embed/z_VLpydaYFM';
-          document.getElementById('yt-preview-row-2').style.display = 'table-row';
-        }
-
-        // 슬라이드 앱 설치
         if (id === 'submit-install-btn') {
           openLink('https://play.google.com/store/apps/details?id=com.google.android.apps.docs.editors.slides');
         }
